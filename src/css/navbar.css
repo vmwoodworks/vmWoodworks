@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Boldonse&display=swap');
+
+:root {
+    --pine-tree : #1d3503;
+    --santas-gray: #9d9ea3;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    gap: 2vw;
+}
+
+#brand-text {
+    display: flex;
+    align-items: center;
+}
+
+#brand-text h1 {
+    padding-left: 150px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 75px;
+    color: var(--pine-tree);
+}
+
+h1 span {
+    color: var(--santas-gray);
+}
+
+img {
+    position: absolute;
+    height: 150px;
+}
+
+#nav-links-menu {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 50px;
+    background-color: var(--pine-tree);
+    color: white;
+}
+
+#nav-links-menu ul {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+#nav-links-menu ul li {
+    padding-right: 50px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 20px;
+}
