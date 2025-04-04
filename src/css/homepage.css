@@ -1,0 +1,28 @@
+col {
+    display: flex;
+}
+
+.large-col {
+    width: 75%;
+}
+
+.small-row {
+    width: 25%;
+}
+
+.row {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+}
+
+.homepage-main-img {
+    height: 700px;
+    width: 1000px;
+}
+
+.img-list {
+    display: flex;
+    flex-direction: column;
+
+}

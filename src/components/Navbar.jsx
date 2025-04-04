@@ -10,6 +10,9 @@ export default function Navbar() {
             <img src={logoSVG}></img>
           <div id='brand-text'>
             <h1><span>VM</span> WOODWORKS </h1>
+            <div>
+            <p id='motto'><span>Woodworking with Heart</span> and Hands</p>
+            </div>
           </div>
         </nav>
         <div id='nav-links-menu'>
