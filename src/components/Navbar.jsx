@@ -6,6 +6,7 @@ export default function Navbar() {
 
     return (
         <>
+        <div className='navbar-div'>
         <nav>
             <img src={logoSVG}></img>
           <div id='brand-text'>
@@ -23,6 +24,7 @@ export default function Navbar() {
                 <li>Placeholder</li>
                 <li>Contact</li>
             </ul>
+        </div>
         </div>
         </>
     )

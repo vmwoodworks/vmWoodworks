@@ -1,49 +1,60 @@
 import "../css/homepage.css";
 
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
 export default function Home() {
-  return (
-    <div>
-      <div className="row">
-        <div className="col large-col">
-          <img
-            className="homepage-main-img"
-            src="src\assets\images\example1.jpg"
-          ></img>
+  return ( 
+    <div className="homepage">
+      <div className="hero-section">
+        <div className="hero-main-img">
+            <img
+              className=""
+              src="src\assets\images\example1.jpg"
+            ></img>
         </div>
-        <div className="col small-col img-list">
-          <ul>
-            <li>
-              {" "}
-              <img src="src\assets\images\example1.jpg" alt="" />
-            </li>
-            <li>
-              {" "}
-              <img src="src\assets\images\example2.jpg" alt="" />
-            </li>
-            <li>
-              {" "}
-              <img src="src\assets\images\example3.jpg" alt="" />
-            </li>
-            <li>
-              {" "}
-              <img src="src\assets\images\example4.jpg" alt="" />
-            </li>
-            <li>
-              {" "}
-              <img src="src\assets\images\example5.jpg" alt="" />
-            </li>
-          </ul>
+        <div className="img-carousel">
+          <div className="img-carousel-div">
+            <img src="src\assets\images\example1.jpg" alt="" />
+            <div className="img-desc">
+            <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
+            <p className="category">Kitchen</p>
+            </div>
+          </div>
+          <div className="img-carousel-div">
+            <img src="src\assets\images\example2.jpg" alt="" />
+            <div className="img-desc">
+            <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
+            <p className="category">Kitchen</p>
+            </div>
+          </div>
+          <div className="img-carousel-div">
+            <img src="src\assets\images\example3.jpg" alt="" />
+            <div className="img-desc">
+            <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
+            <p className="category">Kitchen</p>
+            </div>
+          </div>
+          <div className="img-carousel-div">
+            <img src="src\assets\images\example4.jpg" alt="" />
+            <div className="img-desc">
+            <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
+            <p className="category">Kitchen</p>
+            </div>
+          </div>
+          <div className="img-carousel-div">
+            <img src="src\assets\images\example5.jpg" alt="" />
+            <div className="img-desc">
+            <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
+            <p className="category">Kitchen</p>
+            </div>
+          </div>
         </div>
       </div>
-      {/* <Row>
-            <Col>1 of 3</Col>
-            <Col>2 of 3</Col>
-            <Col>3 of 3</Col>
-          </Row> */}
+      <h2>Bout</h2>
+      <p>
+        Introducing VMWoodworks: Where craftsmanship meets design. We specialize
+        in building bespoke kitchens and cabinets, offering a seamless blend of
+        functionality and aesthetics. With our expertise in both design and
+        production, we bring your dream project to life.
+      </p>
     </div>
   );
 }
