@@ -1,0 +1,217 @@
+import "../css/contact.css";
+
+import React, { useState } from "react";
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    city: "",
+    state: "",
+    zip: "",
+    emailAddress: "",
+    phoneNumber: "",
+    projectDetails: {
+      interests: [],
+      startDate: "",
+      additionalNotes: "",
+    },
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleProjectInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      projectDetails: {
+        ...prevData.projectDetails,
+        [name]: value,
+      },
+    }));
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      projectDetails: {
+        ...prevData.projectDetails,
+        interests: checked
+          ? [...prevData.projectDetails.interests, name]
+          : prevData.projectDetails.interests.filter(
+              (interest) => interest !== name
+            ),
+      },
+    }));
+  };
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!formData.firstName) formErrors.firstName = "This is a required field.";
+    if (!formData.lastName) formErrors.lastName = "This is a required field.";
+    if (!formData.emailAddress)
+      formErrors.emailAddress = "This is a required field.";
+    return formErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+    } else {
+      console.log("Form submitted:", formData);
+      // TODO:Handle form submission logic here
+      alert("Form submitted successfully!");
+    }
+  };
+
+  return (
+    <div id="form-div">
+      <form onSubmit={handleSubmit}>
+        <h2>Request A Callback</h2>
+        <label>
+          <p>First Name</p>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
+          />
+          {errors.firstName && (
+            <span style={{ color: "red" }}>{errors.firstName}</span>
+          )}
+        </label>
+        <br />
+        <label>
+          <p>Last Name</p>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+          />
+          {errors.lastName && (
+            <span style={{ color: "red" }}>{errors.lastName}</span>
+          )}
+        </label>
+        <br />
+        <label>
+          City
+          <input
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleInputChange}
+          />
+        </label>
+        <br />
+        <label>
+          State
+          <input
+            type="text"
+            name="state"
+            value={formData.state}
+            onChange={handleInputChange}
+          />
+        </label>
+        <br />
+        <label>
+          Zip
+          <input
+            type="text"
+            name="zip"
+            value={formData.zip}
+            onChange={handleInputChange}
+          />
+        </label>
+        <br />
+        <label>
+          <p>Email Address</p>
+          <input
+            type="email"
+            name="emailAddress"
+            value={formData.emailAddress}
+            onChange={handleInputChange}
+          />
+          {errors.emailAddress && (
+            <span style={{ color: "red" }}>{errors.emailAddress}</span>
+          )}
+        </label>
+        <br />
+        <label>
+          Phone Number
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+          />
+        </label>
+        <br />
+
+        {/* Interests Section */}
+        <h3>I'm Interested in:</h3>
+        {[
+          "Kitchen Cabinetry",
+          "Custom Bar",
+          "Bathrooms",
+          "Master Bath",
+          "Furniture",
+        ].map((interest) => (
+          <label className="container" key={interest}>
+            <input
+              type="checkbox"
+              name={interest}
+              checked={formData.projectDetails.interests.includes(interest)}
+              onChange={handleCheckboxChange}
+            />
+            {interest}
+            <span className="checkmark"></span>
+          </label>
+        ))}
+        <br />
+
+        {/* Project Start Date */}
+        <label>
+          When would you like to start your project?
+          <input
+            type="date"
+            name="startDate"
+            value={formData.projectDetails.startDate}
+            onChange={handleProjectInputChange}
+          />
+        </label>
+        <br />
+
+        {/* Additional Notes */}
+        <label>
+          Message
+          <textarea
+            name="additionalNotes"
+            spellcheck="false"
+            value={formData.projectDetails.additionalNotes}
+            onChange={handleProjectInputChange}
+          />
+        </label>
+        <br />
+        {/* Submit Button */}
+        <button className="submit-btn" type="submit">
+           Send
+          <i class="bi bi-send-fill"></i>
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Contact;
