@@ -1,6 +1,7 @@
 import "../css/contact.css";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,11 +15,13 @@ const Contact = () => {
     projectDetails: {
       interests: [],
       startDate: "",
-      additionalNotes: "",
+      message: "",
     },
   });
 
   const [errors, setErrors] = useState({});
+
+  const form = useRef();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +65,10 @@ const Contact = () => {
       formErrors.emailAddress = "This is a required field.";
     return formErrors;
   };
+  
+  
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,13 +78,36 @@ const Contact = () => {
     } else {
       console.log("Form submitted:", formData);
       // TODO:Handle form submission logic here
+      sendEmail()
       alert("Form submitted successfully!");
     }
   };
 
+
+
+  const sendEmail = () => {
+
+    emailjs
+      .sendForm('service_3f4yeom', 'template_omro8cg', form.current, {
+        publicKey: 'G9sm5COvR3LFCAZFb',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
+
+//   EmailJS
+
+
+
   return (
     <div id="form-div">
-      <form onSubmit={handleSubmit}>
+      <form ref={form} onSubmit={handleSubmit}>
         <h2>Request A Callback</h2>
         <label>
           <p>First Name</p>
@@ -197,9 +227,9 @@ const Contact = () => {
         <label>
           Message
           <textarea
-            name="additionalNotes"
-            spellcheck="false"
-            value={formData.projectDetails.additionalNotes}
+            name="message"
+            spellCheck="false"
+            value={formData.projectDetails.message}
             onChange={handleProjectInputChange}
           />
         </label>
@@ -207,7 +237,7 @@ const Contact = () => {
         {/* Submit Button */}
         <button className="submit-btn" type="submit">
            Send
-          <i class="bi bi-send-fill"></i>
+          <i className="bi bi-send-fill"></i>
         </button>
       </form>
     </div>
