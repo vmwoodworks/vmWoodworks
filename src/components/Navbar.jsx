@@ -1,6 +1,8 @@
 import '../css/navbar.css';
 import logoSVG from '../assets/logo.svg'
 
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
 
 
@@ -8,11 +10,13 @@ export default function Navbar() {
         <>
         <div className='navbar-div'>
         <nav>
-            <img src={logoSVG}></img>
+            <Link to="/">
+            <img id='logo-img' src={logoSVG}></img>
+            </Link>
           <div id='brand-text'>
             <h1><span>VM</span> WOODWORKS </h1>
             <div>
-            <p id='motto'><span>Woodworking with Heart</span> and Hands</p>
+            <p id='motto'>Kitchens and Cabinets | 267-379-3140</p>
             </div>
           </div>
         </nav>
@@ -22,7 +26,9 @@ export default function Navbar() {
                 <li>About</li>
                 <li>Placeholder</li>
                 <li>Placeholder</li>
+                <Link to='/contact' className='links'>
                 <li>Contact</li>
+                </Link>
             </ul>
         </div>
         </div>

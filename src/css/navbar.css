@@ -38,17 +38,17 @@ nav {
 }
 
 #motto {
-    font-family: "Imperial Script", cursive;
-    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 500;
     font-style: normal;
-    font-size: 35px;
+    font-size: 20px;
 }
 
 h1 span {
     color: var(--santas-gray);
 }
 
-nav img {
+#logo-img {
     position: absolute;
     height: 150px;
 }
@@ -63,10 +63,10 @@ nav img {
 }
 
 #nav-links-menu ul {
+    margin: 0;
     list-style-type: none;
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: end;
 }
 
@@ -76,6 +76,15 @@ nav img {
     font-weight: 300;
     font-style: normal;
     font-size: 20px;
+}
+
+.links:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.links:hover {
+    color: var(--santas-gray);
 }
 
 /* Center Links */
