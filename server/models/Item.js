@@ -2,6 +2,10 @@ const { Schema, model } = require('mongoose');
 
 // Define the schema
 const ItemSchema = new Schema({
+  id: {
+    type: Schema.Types.ObjectId,
+    auto: true,
+  },
   mainImage: {
     type: String, // URL or path to the main image
     required: true, // Main image is required

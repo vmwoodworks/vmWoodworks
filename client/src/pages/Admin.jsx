@@ -4,7 +4,6 @@ import { ADD_ITEM_MUTATION } from '../utils/mutations'; // Import your mutation
 
 const Admin = () => {
   const [formData, setFormData] = useState({
-    _id: '', // You might generate this dynamically or let the server handle it.
     description: '',
     category: '',
     mainPicture: null,
@@ -38,7 +37,6 @@ const Admin = () => {
     try {
       const { data } = await addItem({
         variables: {
-          _id: formData._id,
           mainImage: mainImageBase64,
           secondaryImages: secondaryImagesBase64,
           description: formData.description,
@@ -67,15 +65,39 @@ const Admin = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="_id" placeholder="ID" onChange={handleInputChange} required />
-      <input type="text" name="description" placeholder="Description" onChange={handleInputChange} required />
-      <input type="text" name="category" placeholder="Category" onChange={handleInputChange} required />
-      <input type="file" name="mainPicture" onChange={handleFileChange} required />
-      <input type="file" name="secondaryPictures" multiple onChange={handleFileChange} />
+      <input
+        type="text"
+        name="description"
+        placeholder="Description"
+        value={formData.description}
+        onChange={handleInputChange}
+        required
+      />
+      <input
+        type="text"
+        name="category"
+        placeholder="Category"
+        value={formData.category}
+        onChange={handleInputChange}
+        required
+      />
+      <input
+        type="file"
+        name="mainPicture"
+        onChange={handleFileChange}
+        required
+      />
+      <input
+        type="file"
+        name="secondaryPictures"
+        multiple
+        onChange={handleFileChange}
+      />
       <button type="submit">Submit</button>
     </form>
   );
 };
 
 export default Admin;
+
 

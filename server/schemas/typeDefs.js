@@ -13,7 +13,6 @@ type Query {
 
 type Mutation {
     addItem(
-        _id: ID!,
         mainImage: String!,
         secondaryImages: [String],
         description: String!,
