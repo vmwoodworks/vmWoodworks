@@ -22,7 +22,9 @@ export default function Navbar() {
         </nav>
         <div id='nav-links-menu'>
             <ul>
+                <Link to='/portfolio' className='links'>
                 <li>Portfolio</li>
+                </Link>
                 <li>About</li>
                 <li>Placeholder</li>
                 <li>Placeholder</li>

@@ -5,6 +5,8 @@ import App from './App';
 import Home from "./pages/Home.jsx";
 import Contact from "./pages/Contact.jsx";
 import Error from "./pages/Error.jsx";
+import Portfolio from "./pages/Portfolio.jsx";
+import Admin from "./pages/Admin.jsx"
 
 const router = createBrowserRouter([
   {
@@ -17,8 +19,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/portfolio",
+        element: <Portfolio />,
+      },
+      {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
       },
     ],
   },

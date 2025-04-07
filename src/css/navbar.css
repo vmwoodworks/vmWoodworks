@@ -83,9 +83,14 @@ h1 span {
     color: inherit;
 }
 
+.links:visited {
+    color: white;
+}
+
 .links:hover {
     color: var(--santas-gray);
 }
+
 
 /* Center Links */
 /* Place motto correctly */
