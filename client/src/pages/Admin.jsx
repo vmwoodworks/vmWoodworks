@@ -6,39 +6,31 @@ const Admin = () => {
   const [formData, setFormData] = useState({
     description: '',
     category: '',
-    mainPicture: null,
+    mainPicture: '',
     secondaryPictures: [],
   });
 
   const [addItem] = useMutation(ADD_ITEM_MUTATION);
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const { name, value } = e.target;
 
-  const handleFileChange = (e) => {
-    const { name } = e.target;
-    if (name === 'mainPicture') {
-      setFormData({ ...formData, mainPicture: e.target.files[0] });
-    } else if (name === 'secondaryPictures') {
-      setFormData({ ...formData, secondaryPictures: Array.from(e.target.files) });
+    if (name === 'secondaryPictures') {
+      // Split the input into an array of URLs for secondary pictures
+      setFormData({ ...formData, secondaryPictures: value.split(',').map((url) => url.trim()) });
+    } else {
+      setFormData({ ...formData, [name]: value });
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Convert files to base64 or upload them to a server and get URLs.
-    const mainImageBase64 = await convertFileToBase64(formData.mainPicture);
-    const secondaryImagesBase64 = await Promise.all(
-      formData.secondaryPictures.map((file) => convertFileToBase64(file))
-    );
-
     try {
       const { data } = await addItem({
         variables: {
-          mainImage: mainImageBase64,
-          secondaryImages: secondaryImagesBase64,
+          mainImage: formData.mainPicture,
+          secondaryImages: formData.secondaryPictures,
           description: formData.description,
           category: formData.category,
         },
@@ -52,15 +44,6 @@ const Admin = () => {
       console.error('Error adding item:', error);
       alert('Failed to add item.');
     }
-  };
-
-  const convertFileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
   };
 
   return (
@@ -82,16 +65,18 @@ const Admin = () => {
         required
       />
       <input
-        type="file"
+        type="text"
         name="mainPicture"
-        onChange={handleFileChange}
+        placeholder="Main Image URL"
+        value={formData.mainPicture}
+        onChange={handleInputChange}
         required
       />
-      <input
-        type="file"
+      <textarea
         name="secondaryPictures"
-        multiple
-        onChange={handleFileChange}
+        placeholder="Secondary Image URLs (comma-separated)"
+        value={formData.secondaryPictures.join(', ')}
+        onChange={handleInputChange}
       />
       <button type="submit">Submit</button>
     </form>
@@ -99,5 +84,6 @@ const Admin = () => {
 };
 
 export default Admin;
+
 
 

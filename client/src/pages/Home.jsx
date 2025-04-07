@@ -7,12 +7,12 @@ export default function Home() {
         <div className="hero-main-img">
             <img
               className=""
-              src="src\assets\images\example1.jpg"
+              src=""
             ></img>
         </div>
         <div className="img-carousel">
           <div className="img-carousel-div">
-            <img src="src\assets\images\example1.jpg" alt="" />
+            <img src="" alt="" />
             <div className="img-desc">
             <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
             <p className="category">Kitchen</p>
