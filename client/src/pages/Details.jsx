@@ -1,33 +1,63 @@
-import React from 'react';
-import { useParams } from 'react-router-dom'; // Get route parameters
-import { useQuery } from '@apollo/client';
-import { GET_ITEM } from '../utils/queries'; // Adjust the path to your query
+import "../css/details.css";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_ITEM } from "../utils/queries";
+
+function changeLastZeroToOne(url) {
+  return url.replace(/(0)(?=[^0]*$)/, "1");
+}
 
 const Details = () => {
-  const { id } = useParams(); // Extract the id parameter from the URL
+  const [isOverlayVisible, setIsOverlayVisible] = useState(true);
+  const [mainImage, setMainImage] = useState("");
+
+  const { id } = useParams();
   const { loading, error, data } = useQuery(GET_ITEM, {
-    variables: { _id: id }, // Pass the id as a variable to the query
+    variables: { _id: id },
   });
+
+  // Use useEffect to set mainImage when data is available
+  useEffect(() => {
+    if (data && data.item && data.item.mainImage) {
+      setMainImage(changeLastZeroToOne(data.item.mainImage));
+    }
+  }, [data]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  function changeLastZeroToOne(url) {
-    return url.replace(/(0)(?=[^0]*$)/, "1");
-  }
+  const toggleOverlay = () => {
+    setIsOverlayVisible(!isOverlayVisible);
+  };
 
+  const handleImageClick = (image) => {
+    setMainImage(image);
+  };
 
   return (
-    <div style={{ padding: '20px', border: '1px solid #ddd', margin: '20px' }}>
-      <img src={changeLastZeroToOne(data.item.mainImage)} alt="Main" style={{ width: '300px', height: '300px' }} />
-      <h1>{data.item.category}</h1>
-      <p>{data.item.description}</p>
-      {/* Render secondary images if available */}
+    <div id="details-div">
+      <h2 className="heading">Details</h2>
+      <div className="details-main-div">
+        <img className="details-main-img" src={mainImage} alt="Main" />
+        <button id="info-button" onClick={toggleOverlay}>
+          i
+        </button>
+        <div className={`overlay ${isOverlayVisible ? "visible" : ""}`}>
+          <p className="details-p">{data.item.description}</p>
+          <p className="category-p">Category: {data.item.category}</p>
+        </div>
+      </div>
+      <h2 className="sub-heading">Additional Photos:</h2>
       {data.item.secondaryImages && (
-        <div>
-          <h3>Additional Images:</h3>
+        <div className="details-secondary-div">
           {data.item.secondaryImages.map((image, index) => (
-            <img key={index} src={changeLastZeroToOne(image)} alt={`Secondary ${index}`} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
+            <img
+              key={index}
+              onClick={() => handleImageClick(changeLastZeroToOne(image))}
+              src={changeLastZeroToOne(image)}
+              alt={`Secondary ${index}`}
+            />
           ))}
         </div>
       )}
@@ -36,3 +66,4 @@ const Details = () => {
 };
 
 export default Details;
+

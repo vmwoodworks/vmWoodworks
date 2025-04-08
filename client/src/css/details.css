@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.heading,
+.sub-heading {
+  font-size: 50px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border-bottom: 2px solid var(--pine-tree);
+}
+
+.sub-heading {
+  font-size: 30px;
+}
+
+#details-div {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 200px;
+}
+
+.details-main-img {
+  width: 1200px;
+  border-radius: 2px;
+}
+
+.details-secondary-div {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px
+}
+
+.details-secondary-div img {
+  object-fit: cover;
+  width: 295px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-radius 0.5s ease;
+}
+.details-secondary-div img:hover {
+  border-radius: 30px;
+}
+
+.details-main-div {
+  position: relative;
+  margin-bottom: 5px;
+
+}
+
+.details-main-div .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.details-main-div .overlay.visible {
+  opacity: 1;
+}
+
+.details-main-div .overlay .details-p {
+  margin: 0;
+  font-size: 22px;
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.details-main-div .overlay .category-p {
+  position: absolute;
+  bottom: 1px;
+  left: 10px;
+  font-size: 15px;
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#info-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+  border: none;
+  padding: .5rem .75rem;
+  border-radius: 30%;
+  transition: color 0.5s ease;
+  transition: background-color 0.5s ease;
+}
+
+#info-button:hover {
+  color: black;
+  background-color: white;
+}
+
+#info-button:active {
+  color: white;
+  background-color: black;
+}

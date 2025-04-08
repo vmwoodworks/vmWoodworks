@@ -6,7 +6,6 @@ import { GET_ITEMS } from "../utils/queries"; // Adjust the path to where your q
 
 const Portfolio = () => {
 
-  // TODO: UNCOMMENT AFTER ADDING CSS
   const { loading, error, data } = useQuery(GET_ITEMS);
 
   if (loading) return <p>Loading...</p>;
@@ -18,6 +17,7 @@ const Portfolio = () => {
 
   return (
     <div id="portfolio-min-height">
+      <h2 className="heading" style={{marginLeft: '150px'}}>Portfolio</h2>
       <div className="portfolio-div">
         {data.items.map((item) => (
           <div className="portfolio-item"

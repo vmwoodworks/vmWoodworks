@@ -4,7 +4,7 @@
 
 
 :root {
-    --pine-tree : #1d3503;
+    --pine-tree: #1d3503;
     --santas-gray: #9d9ea3;
 }
 
@@ -35,6 +35,12 @@ nav {
     font-style: normal;
     font-size: 75px;
     color: var(--pine-tree);
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 #motto {
