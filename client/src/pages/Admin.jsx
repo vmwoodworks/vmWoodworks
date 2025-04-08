@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_ITEM_MUTATION } from '../utils/mutations'; // Import your mutation
+import '../css/admin.css';
 
 const Admin = () => {
   const [formData, setFormData] = useState({
@@ -47,15 +48,19 @@ const Admin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
+    <form className='admin-form' onSubmit={handleSubmit}>
+      <div>
+        <label>Description</label>
+      <textarea
         name="description"
         placeholder="Description"
         value={formData.description}
         onChange={handleInputChange}
         required
       />
+      </div>
+      <div>
+        <label>Category (example: Kitchen, Bath, Cabinet)</label>
       <input
         type="text"
         name="category"
@@ -64,6 +69,10 @@ const Admin = () => {
         onChange={handleInputChange}
         required
       />
+
+      </div>
+      <div>
+<label>Main Picture URL </label>
       <input
         type="text"
         name="mainPicture"
@@ -72,12 +81,16 @@ const Admin = () => {
         onChange={handleInputChange}
         required
       />
+      </div>
+      <div>
+<label>Additional Pictures (example: link1, link2) <span style={{color: 'red'}}>COMMA-SEPARATED!</span></label>
       <textarea
         name="secondaryPictures"
         placeholder="Secondary Image URLs (comma-separated)"
         value={formData.secondaryPictures.join(', ')}
         onChange={handleInputChange}
       />
+      </div>
       <button type="submit">Submit</button>
     </form>
   );

@@ -1,0 +1,25 @@
+.admin-form {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.admin-form div textarea {
+    height: 100px;
+    width: 100%;
+}
+.admin-form div:last-of-type textarea {
+    height: 300px;
+}
+
+.admin-form div input:last-of-type {
+    width: 100%;
+}
+
+.admin-form button {
+    width: 150px;
+    margin: auto;
+}

@@ -16,7 +16,7 @@ const Portfolio = () => {
   }
 
   return (
-    <div id="portfolio-min-height">
+    <div id="portolio-page" style={{marginBottom: '100px'}}>
       <h2 className="heading" style={{marginLeft: '150px'}}>Portfolio</h2>
       <div className="portfolio-div">
         {data.items.map((item) => (
@@ -36,7 +36,7 @@ const Portfolio = () => {
           </div>
     ))}
       </div>
-      </div>
+    </div>
     );
 
 };

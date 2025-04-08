@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 
-#portfolio-min-height {
-    min-height: 71vh;
-}
-
 .portfolio-div {
     margin-top: 15px;
     margin-left: 150px;
