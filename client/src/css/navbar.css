@@ -76,6 +76,7 @@ h1 span {
     font-weight: 300;
     font-style: normal;
     font-size: 20px;
+    transition: color 0.3s ease;
 }
 
 .links:link {

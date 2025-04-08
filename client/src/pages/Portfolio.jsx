@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import '../css/portfolio.css';
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_ITEMS } from "../utils/queries"; // Adjust the path to where your query is defined
 
 const Portfolio = () => {
+
+  // TODO: UNCOMMENT AFTER ADDING CSS
   const { loading, error, data } = useQuery(GET_ITEMS);
 
   if (loading) return <p>Loading...</p>;
@@ -14,25 +17,28 @@ const Portfolio = () => {
   }
 
   return (
-    <div>
-      {data.items.map((item) => (
-        <div
-          key={item._id}
-          style={{ border: "1px solid #ddd", margin: "10px", padding: "10px" }}
-        >
-          <Link to={`/details/${item._id}`}>
-            <img
-              src={changeLastZeroToOne(item.mainImage)}
-              alt="Main"
-              style={{ width: "100px", height: "100px" }}
-            />
-            <h3>{item.category}</h3>
-            <p>{item.description}</p>
-          </Link>
-        </div>
-      ))}
-    </div>
-  );
+    <div id="portfolio-min-height">
+      <div className="portfolio-div">
+        {data.items.map((item) => (
+          <div className="portfolio-item"
+            key={item._id}
+          >
+            <Link to={`/details/${item._id}`}>
+              <img
+                src={changeLastZeroToOne(item.mainImage)}
+                alt="Main"
+              />
+              <div className="overlay">
+              <p className="details-p">{item.description}</p>
+              <p className="category-p">{item.category}</p>
+              </div>
+            </Link>
+          </div>
+    ))}
+      </div>
+      </div>
+    );
+
 };
 
 export default Portfolio;

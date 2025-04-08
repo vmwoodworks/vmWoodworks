@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+#portfolio-min-height {
+    min-height: 71vh;
+}
+
+.portfolio-div {
+    /* max-width: 100px; */
+    margin-top: 15px;
+    margin-left: 150px;
+    margin-right: 150px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.portfolio-item {
+    position: relative;
+    display: inline-block;
+}
+
+.portfolio-item img {
+    border-radius: 5px;
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.portfolio-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 350px;
+    height: 70%;
+    background: rgba(0, 0, 0, 0.5); /* Gray transparent overlay */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to start vertically */
+    align-items: flex-start; /* Align items to start horizontally */
+    padding: 10px; /* Add padding for spacing */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* Smooth fade-in effect */
+  }
+
+  .portfolio-item .overlay .details-p {
+    margin: 0; /* Remove default margins */
+    font-size: 14px;
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+  .portfolio-item .overlay .category-p {
+    position: absolute;
+    bottom: 1px; /* Position from the bottom */
+    left: 10px; /* Position from the left */
+    font-size: 12px;
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  .portfolio-item:hover .overlay {
+    opacity: 1;
+  }
