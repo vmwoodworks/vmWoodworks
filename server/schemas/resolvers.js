@@ -7,6 +7,9 @@ const resolvers = {
         items: async () => {
             return await Item.find({});
         },
+        item: async (parent, { _id }) => {
+            return await Item.findById(_id);
+          },
     },
     Mutation: {
         addItem: async (_, args) => {

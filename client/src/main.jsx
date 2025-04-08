@@ -6,7 +6,8 @@ import Home from "./pages/Home.jsx";
 import Contact from "./pages/Contact.jsx";
 import Error from "./pages/Error.jsx";
 import Portfolio from "./pages/Portfolio.jsx";
-import Admin from "./pages/Admin.jsx"
+import Admin from "./pages/Admin.jsx";
+import Details from './pages/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
         path: "/admin",
         element: <Admin />,
       },
+      {
+        path: "/details/:id",
+        element: <Details />,
+      },
+      
     ],
   },
 ]);

@@ -8,7 +8,8 @@ type Item {
 }
 
 type Query {
-    items: [Item]
+  items: [Item] 
+  item(_id: ID!): Item
 }
 
 type Mutation {
