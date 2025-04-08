@@ -9,7 +9,7 @@ export default function Footer() {
         123 Main St <br /> Philadelphia, PA <br /> 19116
       </p>
       <Link to="/">
-        <img src="\src\assets\footer_logo.jpg"></img>
+        <img src="/assets\footer_logo.jpg"></img>
       </Link>
 
       <a href="https://www.instagram.com/vm.woodworks/">

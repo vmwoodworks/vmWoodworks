@@ -7,40 +7,40 @@ export default function Home() {
         <div className="hero-main-img">
             <img
               className=""
-              src=""
+              src="/assets\images\example1.jpg"
             ></img>
         </div>
         <div className="img-carousel">
           <div className="img-carousel-div">
-            <img src="" alt="" />
+            <img src="/assets\images\example2.jpg" alt="" />
             <div className="img-desc">
             <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
             <p className="category">Kitchen</p>
             </div>
           </div>
           <div className="img-carousel-div">
-            <img src="src\assets\images\example2.jpg" alt="" />
+            <img src="/assets\images\example2.jpg" alt="" />
             <div className="img-desc">
             <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
             <p className="category">Kitchen</p>
             </div>
           </div>
           <div className="img-carousel-div">
-            <img src="src\assets\images\example3.jpg" alt="" />
+            <img src="/assets\images\example3.jpg" alt="" />
             <div className="img-desc">
             <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
             <p className="category">Kitchen</p>
             </div>
           </div>
           <div className="img-carousel-div">
-            <img src="src\assets\images\example4.jpg" alt="" />
+            <img src="/assets\images\example4.jpg" alt="" />
             <div className="img-desc">
             <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
             <p className="category">Kitchen</p>
             </div>
           </div>
           <div className="img-carousel-div">
-            <img src="src\assets\images\example5.jpg" alt="" />
+            <img src="/assets\images\example5.jpg" alt="" />
             <div className="img-desc">
             <p>Handmade Wood Kitchen for bla-bla-bla asdasdasdasdasdasd</p>
             <p className="category">Kitchen</p>
