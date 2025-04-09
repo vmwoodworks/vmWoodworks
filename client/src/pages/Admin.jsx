@@ -68,11 +68,6 @@ const Admin = () => {
       
       if (data) {
         alert('Item added successfully!');
-        console.log('Added item:', data.addItem);
-        console.log('Original main URL:', formData.mainPicture);
-        console.log('Processed main URL:', processedMainImage);
-        console.log('Original secondary URLs:', formData.secondaryPictures);
-        console.log('Processed secondary URLs:', processedSecondaryImages);
       }
     } catch (error) {
       console.error('Error adding item:', error);

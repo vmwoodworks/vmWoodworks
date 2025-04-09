@@ -20,6 +20,7 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   const form = useRef();
 
@@ -65,45 +66,51 @@ const Contact = () => {
       formErrors.emailAddress = "This is a required field.";
     return formErrors;
   };
-  
-  
 
-
+  const resetForm = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      city: "",
+      state: "",
+      zip: "",
+      emailAddress: "",
+      phoneNumber: "",
+      projectDetails: {
+        interests: [],
+        startDate: "",
+        message: "",
+      },
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      setSuccessMessage("");
     } else {
-      console.log("Form submitted:", formData);
-      // TODO:Handle form submission logic here
-      sendEmail()
-      alert("Form submitted successfully!");
+      sendEmail();
     }
   };
 
-
-
   const sendEmail = () => {
-
     emailjs
       .sendForm('service_3f4yeom', 'template_omro8cg', form.current, {
         publicKey: 'G9sm5COvR3LFCAZFb',
       })
       .then(
         () => {
-          console.log('SUCCESS!');
+          setSuccessMessage("Thank you for your message. We’ll respond shortly.");
+          resetForm();
         },
         (error) => {
           console.log('FAILED...', error.text);
+          setSuccessMessage("");
         },
       );
   };
-
-//   EmailJS
-
-
 
   return (
     <div id="form-div">
@@ -234,9 +241,17 @@ const Contact = () => {
           />
         </label>
         <br />
+        
+        {/* Success Message */}
+        {successMessage && (
+          <div style={{ color: "#1d3503", marginBottom: "15px", fontWeight: "bold", fontSize: '20px' }}>
+            {successMessage}
+          </div>
+        )}
+        
         {/* Submit Button */}
         <button className="submit-btn" type="submit">
-           Send
+          Send
           <i className="bi bi-send-fill"></i>
         </button>
       </form>
