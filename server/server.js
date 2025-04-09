@@ -43,7 +43,7 @@ const startApolloServer = async () => {
         app.use(express.static(path.join(__dirname, '../client/dist')));
 
         // Serve React's index.html for all other routes (for SPA behavior)
-        app.get('*', (req, res) => {
+        app.get('*path', (req, res) => {
             res.sendFile(path.join(__dirname, '../client/dist/index.html'));
         });
 
