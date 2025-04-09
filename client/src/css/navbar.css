@@ -1,104 +1,204 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Boldonse&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap');
 
-
-
 :root {
-    --pine-tree: #1d3503;
-    --santas-gray: #9d9ea3;
+  --pine-tree: #1d3503;
+  --santas-gray: #9d9ea3;
 }
 
 .navbar-div {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 nav {
-    position: relative;
-    display: flex;
-    height: 100px;
-    width: 100%;
+  position: relative;
+  display: flex;
+  height: 100px;
+  width: 100%;
 }
 
 #brand-text {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #brand-text h1 {
-    margin: 0;
-    padding-left: 150px;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 75px;
-    color: var(--pine-tree);
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
+  margin: 0;
+  padding-left: 150px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 75px;
+  color: var(--pine-tree);
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 #motto {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 20px;
-    padding-right: 50px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  padding-right: 50px;
 }
 
 h1 span {
-    color: var(--santas-gray);
+  color: var(--santas-gray);
 }
 
 #logo-img {
-    position: absolute;
-    height: 150px;
+  position: absolute;
+  height: 150px;
+}
+
+.mobile-logo-link {
+  display: none;
+}
+
+#mobile-logo-img {
+  height: 40px;
+  margin: 10px 0 0 15px;
 }
 
 #nav-links-menu {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    height: 50px;
-    background-color: var(--pine-tree);
-    color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 50px;
+  background-color: var(--pine-tree);
+  color: white;
 }
 
 #nav-links-menu ul {
-    margin: 0;
-    list-style-type: none;
-    width: 100%;
-    display: flex;
-    justify-content: end;
+  margin: 0;
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #nav-links-menu ul li {
-    padding-right: 50px;
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 20px;
-    transition: color 0.3s ease;
+  padding-right: 50px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  transition: color 0.3s ease;
 }
 
 .links:link {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .links:visited {
-    color: white;
+  color: white;
 }
 
 .links:hover {
-    color: var(--santas-gray);
+  color: var(--santas-gray);
 }
 
+/* Burger menu styles */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+}
 
-/* Center Links */
-/* Place motto correctly */
+.burger-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--pine-tree);
+  transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+  nav {
+    height: 60px;
+    align-items: center;
+    background-color: #1d3503;
+  }
+  
+  .burger-menu {
+    display: flex;
+  }
+
+  .burger-menu div {
+    background-color: white;
+  }
+  
+  .burger-bar.open:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .burger-bar.open:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .burger-bar.open:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -8px);
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  .mobile-logo-link {
+    display: block;
+  }
+
+  #mobile-logo-img {
+    height: 60px;
+    margin: 0px;
+    border-radius: 0 20px 20px 0;
+  }
+  
+  #brand-text {
+    display: none;
+  }
+  
+  #nav-links-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    flex-direction: column;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    z-index: 9;
+  }
+  
+  #nav-links-menu.open {
+    height: auto;
+  }
+  
+  #nav-links-menu ul {
+    flex-direction: column;
+    padding: 20px 0;
+    align-items: center;
+  }
+  
+  #nav-links-menu ul li {
+    padding: 15px 0;
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+  }
+}
