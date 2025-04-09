@@ -1,6 +1,5 @@
 import '../css/navbar.css';
 import logoSVG from '/assets/logo.svg';
-import footerLogo from '/assets/footer_logo.jpg';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 
@@ -50,6 +49,8 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
+      {/* Add a spacer div for mobile to prevent content from hiding under the fixed navbar */}
+      <div className="navbar-spacer"></div>
     </>
   );
 }

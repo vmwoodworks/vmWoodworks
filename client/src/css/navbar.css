@@ -129,6 +129,22 @@ h1 span {
 
 /* Mobile styles */
 @media screen and (max-width: 768px) {
+  /* Make the navbar sticky */
+  .navbar-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding-bottom: 0;
+  }
+  
+  /* Add spacer to prevent content from being hidden under fixed navbar */
+  .navbar-spacer {
+    height: 60px;
+    width: 100%;
+  }
+
   nav {
     height: 60px;
     align-items: center;
