@@ -4,10 +4,6 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_ITEM } from "../utils/queries";
 
-function changeLastZeroToOne(url) {
-  return url.replace(/(0)(?=[^0]*$)/, "1");
-}
-
 const Details = () => {
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [mainImage, setMainImage] = useState("");
@@ -35,7 +31,7 @@ const Details = () => {
   // Use useEffect to set mainImage when data is available
   useEffect(() => {
     if (data && data.item && data.item.mainImage) {
-      setMainImage(changeLastZeroToOne(data.item.mainImage));
+      setMainImage(data.item.mainImage);
     }
   }, [data]);
 
@@ -85,8 +81,8 @@ const Details = () => {
           {data.item.secondaryImages.map((image, index) => (
             <img
               key={index}
-              onClick={() => handleImageClick(changeLastZeroToOne(image))}
-              src={changeLastZeroToOne(image)}
+              onClick={() => handleImageClick(image)}
+              src={image}
               alt={`Secondary ${index}`}
               loading="lazy"
             />
