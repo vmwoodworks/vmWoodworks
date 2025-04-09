@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ITEM } from "../utils/queries";
 
 const Details = () => {
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(true);
   const [mainImage, setMainImage] = useState("");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
