@@ -28,12 +28,6 @@ export default function Home() {
     {
       src: "/assets/images/featured4.jpg",
       description:
-        "This modern, built-in dresser offers a sleek, dark blue finish with nine drawers, providing ample and concealed storage space. Its minimalist design enhances any room.",
-      category: "Dresser",
-    },
-    {
-      src: "/assets/images/featured5.jpg",
-      description:
         "This custom ceiling features a coffered design with natural wood beams, creating a sophisticated and spacious feel in the room. Recessed lighting enhances the architectural details.",
       category: "Custom Ceiling",
     },
@@ -77,24 +71,10 @@ export default function Home() {
       {/* About Section */}
       <div className="about-section">
         <h2 className="heading">
-          VM Woodworks: Where Craftsmanship Meets Design
+        <span>VM Woodworks</span>: Where Craftsmanship Meets Design
         </h2>
         <p>
-          At VM Woodworks, we believe that your home should reflect your unique
-          style, and there's no better way to achieve this than with
-          custom-built kitchens, cabinets, and furniture. Specializing in
-          bespoke woodworking, we create timeless pieces that seamlessly blend
-          form and function. Whether you're looking to design a dream kitchen,
-          build storage solutions like cabinets and closets, or bring a unique
-          piece of furniture to life, we're here to make it happen.
-        </p>
-        <p>
-          At VM Woodworks, we don't just build furniture; we build
-          relationships. From concept to completion, we guide you through every
-          step of the process, delivering results that exceed expectations.
-          Whether you're transforming a single room or undertaking a full home
-          renovation, our custom kitchens, cabinets, and closets are designed to
-          elevate your living space with sophistication and practicality.
+        At VM Woodworks, we believe your home should reflect your unique style, which is why we specialize in custom-built kitchens, cabinets, and furniture that seamlessly blend form and function. From designing dream kitchens and storage solutions to crafting unique furniture, we guide you through every step of the process, delivering timeless pieces that elevate your living space with sophistication and practicality.
         </p>
       </div>
     </div>

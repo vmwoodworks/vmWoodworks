@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root {
   --pine-tree: #1d3503;
   --santas-gray: #9d9ea3;
@@ -31,7 +33,7 @@
 .hero-main-img img {
   width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 600px;
   object-fit: cover;
 }
 
@@ -112,13 +114,22 @@
   margin-bottom: 30px;
 }
 
+.about-section span {
+  color: var(--pine-tree);
+}
+
 .about-section p {
   width: 100%;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Times New Roman", Times, serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
   line-height: 1.4;
+  padding: 50px;
+  background-color: rgb(236, 236, 243);
+  margin: auto;
+  border-radius: 0 20px;
 }
 
 .img-carousel-div.active {

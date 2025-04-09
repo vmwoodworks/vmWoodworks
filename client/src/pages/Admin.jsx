@@ -13,14 +13,6 @@ const changeDropboxUrlFormat = (url) => {
     // Replace dl=0 or any other dl value with raw=1
     newUrl = newUrl.replace(/dl=[0-9]/, 'raw=1');
     
-    // If there's no dl parameter, add raw=1
-    if (!newUrl.includes('raw=1')) {
-      newUrl = newUrl.includes('?') ? newUrl + '&raw=1' : newUrl + '?raw=1';
-    }
-    
-    // Convert www.dropbox.com to dl.dropboxusercontent.com for better compatibility
-    newUrl = newUrl.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
-    
     return newUrl;
   }
   
