@@ -26,7 +26,9 @@ export default function App() {
     <>
       <ApolloProvider client={client}>
         <Navbar />
+        <main>
         <Outlet />
+        </main>
         <Footer />
       </ApolloProvider>
     </>

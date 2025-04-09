@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 50px;
 }
 
 .admin-form div textarea {
@@ -22,4 +21,21 @@
 .admin-form button {
     width: 150px;
     margin: auto;
+}
+
+.passcode-container {
+    display: flex;
+    max-width: 500px;
+    margin: auto;
+    flex-direction: column;
+}
+
+.passcode-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.passcode-container form button {
+    width: 200px;
 }

@@ -29,6 +29,15 @@ const changeDropboxUrlFormat = (url) => {
 };
 
 const Admin = () => {
+  // State for passcode protection
+  const [authenticated, setAuthenticated] = useState(false);
+  const [passcode, setPasscode] = useState('');
+  const [error, setError] = useState('');
+  
+  // Correct passcode - in a real application, this should be handled securely
+  // and not hard-coded in the component
+  const CORRECT_PASSCODE = '3140';
+
   const [formData, setFormData] = useState({
     description: '',
     category: '',
@@ -38,6 +47,21 @@ const Admin = () => {
   
   const [addItem] = useMutation(ADD_ITEM_MUTATION);
   
+  const handlePasscodeChange = (e) => {
+    setPasscode(e.target.value);
+    setError('');
+  };
+  
+  const handlePasscodeSubmit = (e) => {
+    e.preventDefault();
+    if (passcode === CORRECT_PASSCODE) {
+      setAuthenticated(true);
+    } else {
+      setError('Incorrect passcode. Access denied.');
+      setPasscode('');
+    }
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     
@@ -48,7 +72,7 @@ const Admin = () => {
       setFormData({ ...formData, [name]: value });
     }
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -74,52 +98,83 @@ const Admin = () => {
       alert('Failed to add item.');
     }
   };
-  
+
+  // Render passcode form if not authenticated
+  if (!authenticated) {
+    return (
+      <div className="passcode-container">
+        <h2>Admin Access</h2>
+        <form onSubmit={handlePasscodeSubmit}>
+          <div>
+            <label>Enter Passcode:</label>
+            <input
+              type="password"
+              value={passcode}
+              onChange={handlePasscodeChange}
+              required
+            />
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit">Access Admin Panel</button>
+        </form>
+      </div>
+    );
+  }
+
+  // Render admin form if authenticated
   return (
-    <form className='admin-form' onSubmit={handleSubmit}>
-      <div>
-        <label>Description</label>
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={formData.description}
-          onChange={handleInputChange}
-          required
-        />
+    <div>
+      <div className="admin-header">
+        <h2>Admin Panel</h2>
+        <button onClick={() => setAuthenticated(false)} className="logout-button">
+          Log Out
+        </button>
       </div>
-      <div>
-        <label>Category (example: Kitchen, Bath, Cabinet)</label>
-        <input
-          type="text"
-          name="category"
-          placeholder="Category"
-          value={formData.category}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Main Picture URL</label>
-        <input
-          type="text"
-          name="mainPicture"
-          placeholder="Main Image URL"
-          value={formData.mainPicture}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Additional Pictures (example: link1, link2) <span style={{color: 'red'}}>COMMA-SEPARATED!</span></label>
-        <textarea
-          name="secondaryPictures"
-          placeholder="Secondary Image URLs (comma-separated)"
-          value={formData.secondaryPictures.join(', ')}
-          onChange={handleInputChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+      <form className='admin-form' onSubmit={handleSubmit}>
+        <div>
+          <label>Description</label>
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={formData.description}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Category (example: Kitchen, Bath, Cabinet)</label>
+          <input
+            type="text"
+            name="category"
+            placeholder="Category"
+            value={formData.category}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Main Picture URL</label>
+          <input
+            type="text"
+            name="mainPicture"
+            placeholder="Main Image URL"
+            value={formData.mainPicture}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Additional Pictures (example: link1, link2) <span style={{color: 'red'}}>COMMA-SEPARATED!</span></label>
+          <textarea
+            name="secondaryPictures"
+            placeholder="Secondary Image URLs (comma-separated)"
+            value={formData.secondaryPictures.join(', ')}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
