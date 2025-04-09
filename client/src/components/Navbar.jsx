@@ -28,7 +28,9 @@ export default function Navbar() {
                 <Link to='/portfolio' className='links'>
                 <li>Portfolio</li>
                 </Link>
+                <Link to='/about' className='links'>
                 <li>About</li>
+                </Link>
                 <Link to='/contact' className='links'>
                 <li>Contact</li>
                 </Link>

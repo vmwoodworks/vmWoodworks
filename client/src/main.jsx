@@ -8,6 +8,7 @@ import Error from "./pages/Error.jsx";
 import Portfolio from "./pages/Portfolio.jsx";
 import Admin from "./pages/Admin.jsx";
 import Details from './pages/Details.jsx';
+import About from './pages/About.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <Details />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       
     ],
