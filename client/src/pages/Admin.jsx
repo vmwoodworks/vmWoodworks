@@ -3,9 +3,29 @@ import { useMutation } from '@apollo/client';
 import { ADD_ITEM_MUTATION } from '../utils/mutations';
 import '../css/admin.css';
 
-// Function to change the last zero to one in a URL
-const changeLastZeroToOne = (url) => {
-  return url.replace(/(0)(?=[^0]*$)/, "1");
+// Function to transform Dropbox URL for better compatibility across browsers
+const changeDropboxUrlFormat = (url) => {
+  // Check if this is a Dropbox URL
+  if (url.includes('dropbox.com')) {
+    // Replace dl=0 with raw=1
+    let newUrl = url;
+    
+    // Replace dl=0 or any other dl value with raw=1
+    newUrl = newUrl.replace(/dl=[0-9]/, 'raw=1');
+    
+    // If there's no dl parameter, add raw=1
+    if (!newUrl.includes('raw=1')) {
+      newUrl = newUrl.includes('?') ? newUrl + '&raw=1' : newUrl + '?raw=1';
+    }
+    
+    // Convert www.dropbox.com to dl.dropboxusercontent.com for better compatibility
+    newUrl = newUrl.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
+    
+    return newUrl;
+  }
+  
+  // Return unchanged URL if not from Dropbox
+  return url;
 };
 
 const Admin = () => {
@@ -32,9 +52,9 @@ const Admin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Process URLs before submitting - change the last 0 to 1
-    const processedMainImage = changeLastZeroToOne(formData.mainPicture);
-    const processedSecondaryImages = formData.secondaryPictures.map(url => changeLastZeroToOne(url));
+    // Process URLs before submitting - change format for better cross-browser compatibility
+    const processedMainImage = changeDropboxUrlFormat(formData.mainPicture);
+    const processedSecondaryImages = formData.secondaryPictures.map(url => changeDropboxUrlFormat(url));
     
     try {
       const { data } = await addItem({
