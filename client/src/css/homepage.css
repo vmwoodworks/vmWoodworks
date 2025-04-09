@@ -19,6 +19,8 @@
 
 .hero-main-img img {
   height: 670px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .img-carousel {
@@ -28,7 +30,8 @@
 }
 
 .img-carousel img {
-  width: 200px;
+  min-width: 190px;
+  max-width: 191px;
   height: 130px;
 }
 
@@ -38,7 +41,8 @@
   flex-direction: row;
   gap: 10px;
   background-color: var(--athens-gray);
-  transition: background-color 0.4s ease;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .img-carousel-div:hover {
@@ -54,4 +58,56 @@
 .img-carousel-div .img-desc .category {
   width: 95%;
   border-top: 1px solid gray;
+}
+
+.img-desc p {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight:400;
+  font-style: normal;
+  font-size: 16px;
+}
+
+.about-section {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.about-section p {
+  width: 40%;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight:400;
+  font-style: normal;
+  font-size: 23px;
+}
+
+.hero-main-img {
+  position: relative;
+}
+.see-more-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight:400;
+  font-style: normal;
+  font-size: 20px;
+  transition: background-color 0.5s ease;
+}
+
+.see-more-button:hover {
+  background-color: #444;
+}
+
+.img-carousel-div.active {
+  background-color: #555;
+}
+
+.img-carousel-div.active .img-desc p {
+  color: white;
 }

@@ -22,12 +22,13 @@ export default function Navbar() {
         </nav>
         <div id='nav-links-menu'>
             <ul>
+                <Link to='/' className='links'>
+                <li>Home</li>
+                </Link>
                 <Link to='/portfolio' className='links'>
                 <li>Portfolio</li>
                 </Link>
                 <li>About</li>
-                <li>Placeholder</li>
-                <li>Placeholder</li>
                 <Link to='/contact' className='links'>
                 <li>Contact</li>
                 </Link>
