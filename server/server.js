@@ -4,7 +4,8 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const db = require('./config/connection'); // Ensure this is correctly configured
 const { typeDefs, resolvers } = require('./schemas');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Load environment variables (if needed)
 require('dotenv').config();
@@ -24,9 +25,16 @@ const startApolloServer = async () => {
         // Start Apollo Server
         await server.start();
 
+        // CORS middleware - added here before other middleware
+        app.use(cors({
+            origin: 'https://your-frontend-domain.com',
+            methods: ['GET', 'POST'],
+            allowedHeaders: ['Content-Type', 'Authorization']
+        }));
+
         // Middleware for parsing JSON and URL-encoded data
-        app.use(bodyParser.urlencoded({ extended: false }))
-        app.use(bodyParser.json())
+        app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(bodyParser.json());
 
         // Apollo GraphQL Middleware
         app.use('/graphql', expressMiddleware(server));
@@ -35,7 +43,7 @@ const startApolloServer = async () => {
         app.use(express.static(path.join(__dirname, '../client/dist')));
 
         // Serve React's index.html for all other routes (for SPA behavior)
-        app.get('*path', (req, res) => {
+        app.get('*', (req, res) => {
             res.sendFile(path.join(__dirname, '../client/dist/index.html'));
         });
 
@@ -54,6 +62,3 @@ const startApolloServer = async () => {
 
 // Start the server
 startApolloServer();
-
-
-  
