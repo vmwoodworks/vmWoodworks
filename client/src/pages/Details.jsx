@@ -9,13 +9,28 @@ function changeLastZeroToOne(url) {
 }
 
 const Details = () => {
-  const [isOverlayVisible, setIsOverlayVisible] = useState(true);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [mainImage, setMainImage] = useState("");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_ITEM, {
     variables: { _id: id },
   });
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // Use useEffect to set mainImage when data is available
   useEffect(() => {
@@ -24,8 +39,17 @@ const Details = () => {
     }
   }, [data]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return (
+    <div id="details-div">
+      <p>Loading...</p>
+    </div>
+  );
+  
+  if (error) return (
+    <div id="details-div">
+      <p>Error: {error.message}</p>
+    </div>
+  );
 
   const toggleOverlay = () => {
     setIsOverlayVisible(!isOverlayVisible);
@@ -33,6 +57,13 @@ const Details = () => {
 
   const handleImageClick = (image) => {
     setMainImage(image);
+    // Scroll to top on mobile when selecting a new image
+    if (isMobile) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -57,6 +88,7 @@ const Details = () => {
               onClick={() => handleImageClick(changeLastZeroToOne(image))}
               src={changeLastZeroToOne(image)}
               alt={`Secondary ${index}`}
+              loading="lazy"
             />
           ))}
         </div>
@@ -66,4 +98,3 @@ const Details = () => {
 };
 
 export default Details;
-

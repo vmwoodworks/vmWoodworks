@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-.heading,
-.sub-heading {
+.heading, .sub-heading {
   font-size: 50px;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
@@ -16,32 +15,41 @@
 
 #details-div {
   max-width: 1200px;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
   margin-bottom: 100px;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .details-main-img {
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
   border-radius: 2px;
 }
 
 .details-secondary-div {
+  width: 100%;
   max-width: 1200px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 5px
+  gap: 5px;
+  justify-content: space-between;
 }
 
 .details-secondary-div img {
   object-fit: cover;
-  width: 295px;
+  width: calc(25% - 5px);
+  min-width: 150px;
   cursor: pointer;
   border-radius: 2px;
   transition: border-radius 0.5s ease;
-}
+} 
+
 .details-secondary-div img:hover {
   border-radius: 30px;
 }
@@ -49,7 +57,7 @@
 .details-main-div {
   position: relative;
   margin-bottom: 5px;
-
+  width: 100%;
 }
 
 .details-main-div .overlay {
@@ -57,7 +65,8 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 30%;
+  height: auto;
+  max-height: 50%;
   background: rgba(0, 0, 0, 0.5);
   color: white;
   display: flex;
@@ -67,6 +76,8 @@
   padding: 10px;
   opacity: 0;
   transition: opacity 0.5s ease;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .details-main-div .overlay.visible {
@@ -83,9 +94,8 @@
 }
 
 .details-main-div .overlay .category-p {
-  position: absolute;
-  bottom: 1px;
-  left: 10px;
+  position: relative;
+  margin-top: 10px;
   font-size: 15px;
   font-family: "Roboto Flex", sans-serif;
   font-optical-sizing: auto;
@@ -104,6 +114,7 @@
   border-radius: 30%;
   transition: color 0.5s ease;
   transition: background-color 0.5s ease;
+  z-index: 10;
 }
 
 #info-button:hover {
@@ -114,4 +125,57 @@
 #info-button:active {
   color: white;
   background-color: black;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+  .heading {
+    font-size: 36px;
+  }
+  
+  .sub-heading {
+    font-size: 24px;
+  }
+  
+  .details-secondary-div img {
+    width: calc(50% - 5px);
+  }
+  
+  .details-main-div .overlay .details-p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    font-size: 28px;
+  }
+  
+  .sub-heading {
+    font-size: 20px;
+  }
+  
+  .details-secondary-div img {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  
+  .details-main-div .overlay {
+    max-height: 70%;
+  }
+  
+  .details-main-div .overlay .details-p {
+    font-size: 16px;
+  }
+  
+  .details-main-div .overlay .category-p {
+    font-size: 14px;
+    position: relative;
+    bottom: auto;
+    left: auto;
+  }
+  
+  #info-button {
+    padding: 0.4rem 0.6rem;
+  }
 }
