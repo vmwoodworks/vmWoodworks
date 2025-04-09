@@ -1,88 +1,40 @@
-/* TODO: ANIMATIONS */
-
-
 :root {
-  --pine-tree : #1d3503;
+  --pine-tree: #1d3503;
   --santas-gray: #9d9ea3;
   --athens-gray: #ececf3;
 }
 
 .homepage {
-  margin-left: 150px;
+  margin-left: 0;
+  padding: 0 20px;
+  max-width: 100%;
+}
+
+.heading {
+  text-align: center;
+  margin: 30px 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
 }
 
 .hero-section {
   display: grid;
-  grid-template-columns: 4fr 3fr;
-  gap: 10px;
-}
-
-.hero-main-img img {
-  height: 670px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.img-carousel {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 5px;
-}
-
-.img-carousel img {
-  min-width: 190px;
-  max-width: 191px;
-  height: 130px;
-}
-
-.img-carousel-div {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  background-color: var(--athens-gray);
-  transition: background-color 0.5s ease-in-out;
-  cursor: pointer;
-}
-
-.img-carousel-div:hover {
-  background-color: var(--santas-gray);
-}
-
-.img-carousel-div .img-desc {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.img-carousel-div .img-desc .category {
-  width: 95%;
-  border-top: 1px solid gray;
-}
-
-.img-desc p {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight:400;
-  font-style: normal;
-  font-size: 16px;
-}
-
-.about-section {
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
-
-.about-section p {
-  width: 40%;
-  font-family: "Bebas Neue", sans-serif;
-  font-weight:400;
-  font-style: normal;
-  font-size: 23px;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 .hero-main-img {
   position: relative;
+  width: 100%;
 }
+
+.hero-main-img img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+}
+
 .see-more-button {
   position: absolute;
   bottom: 20px;
@@ -94,14 +46,79 @@
   border-radius: 5px;
   cursor: pointer;
   font-family: "Bebas Neue", sans-serif;
-  font-weight:400;
+  font-weight: 400;
   font-style: normal;
-  font-size: 20px;
+  font-size: 18px;
   transition: background-color 0.5s ease;
 }
 
 .see-more-button:hover {
   background-color: #444;
+}
+
+.img-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.img-carousel-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background-color: var(--athens-gray);
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.img-carousel-div:hover {
+  background-color: var(--santas-gray);
+}
+
+.img-carousel img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.img-carousel-div .img-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.img-carousel-div .img-desc .category {
+  width: 100%;
+  border-top: 1px solid gray;
+  padding-top: 5px;
+  margin-top: 5px;
+}
+
+.img-desc p {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  margin: 0;
+}
+
+.about-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.about-section p {
+  width: 100%;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 .img-carousel-div.active {
@@ -110,4 +127,85 @@
 
 .img-carousel-div.active .img-desc p {
   color: white;
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 768px) {
+  .homepage {
+    margin-left: 50px;
+    padding: 0 30px;
+  }
+
+  .hero-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .img-carousel img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .img-desc p {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .homepage {
+    margin-left: 100px;
+  }
+
+  .hero-section {
+    grid-template-columns: 4fr 3fr;
+  }
+  
+  .hero-main-img img {
+    height: 600px;
+  }
+  
+  .img-carousel img {
+    min-width: 150px;
+    max-width: 150px;
+    height: 110px;
+  }
+  
+  .img-desc p {
+    font-size: 16px;
+  }
+  
+  .about-section p {
+    width: 60%;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .homepage {
+    margin-left: 150px;
+  }
+  
+  .hero-main-img img {
+    height: 670px;
+  }
+  
+  .img-carousel img {
+    min-width: 190px;
+    max-width: 191px;
+    height: 130px;
+  }
+  
+  .about-section p {
+    width: 40%;
+    font-size: 23px;
+  }
+}
+
+/* Optional: Animation for image transitions */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.main-image {
+  animation: fadeIn 0.5s ease-in;
 }
