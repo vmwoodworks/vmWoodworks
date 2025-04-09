@@ -27,7 +27,7 @@ const startApolloServer = async () => {
 
         // CORS middleware - added here before other middleware
         app.use(cors({
-            origin: 'https://your-frontend-domain.com',
+            origin: 'https://vmwoodworks.onrender.com/',
             methods: ['GET', 'POST'],
             allowedHeaders: ['Content-Type', 'Authorization']
         }));
