@@ -10,8 +10,19 @@ const Portfolio = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   
-  function changeLastZeroToOne(url) {
-    return url.replace(/(0)(?=[^0]*$)/, "1");
+  // Improved function to handle Safari differently
+  function getImageUrl(url) {
+    // Check if user is on Safari
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    
+    if (isSafari) {
+      // For Safari, use direct URL instead of redirect
+      // This might need adjustment based on your exact URL structure
+      return url.replace(/\?dl=0$/, "?dl=1");
+    } else {
+      // Original logic for other browsers
+      return url.replace(/(0)(?=[^0]*$)/, "1");
+    }
   }
   
   return (
@@ -22,8 +33,14 @@ const Portfolio = () => {
           <div className="portfolio-item" key={item._id}>
             <Link to={`/details/${item._id}`}>
               <img
-                src={changeLastZeroToOne(item.mainImage)}
+                src={getImageUrl(item.mainImage)}
                 alt="Main"
+                onError={(e) => {
+                  // Fallback if the image fails to load
+                  console.error("Image failed to load:", e.target.src);
+                  // You could set a fallback image here
+                  // e.target.src = "fallback-image.jpg";
+                }}
               />
               <div className="overlay">
                 <p className="details-p">{item.description}</p>
