@@ -11,10 +11,12 @@ export default function Footer() {
       <Link to="/">
         <img src="/assets\footer_logo.jpg"></img>
       </Link>
-
+<div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+  <p style={{ fontSize: '15px'}}>267-379-3140</p>
       <a href="https://www.instagram.com/vm.woodworks/">
         <i className="bi bi-instagram h1"></i>
       </a>
+</div>
     </div>
   );
 }

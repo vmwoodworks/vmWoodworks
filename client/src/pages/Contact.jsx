@@ -115,7 +115,9 @@ const Contact = () => {
   return (
     <div id="form-div">
       <form ref={form} onSubmit={handleSubmit}>
-        <h2>Request A Callback</h2>
+        <h2 className="heading">Contact Us</h2>
+        <h3>Request A Callback</h3>
+        <h6></h6>
         <label>
           <p>First Name</p>
           <input
@@ -199,11 +201,10 @@ const Contact = () => {
         {/* Interests Section */}
         <h3>I'm Interested in:</h3>
         {[
-          "Kitchen Cabinetry",
-          "Custom Bar",
-          "Bathrooms",
-          "Master Bath",
+          "Kitchen",
+          "Bathroom",
           "Furniture",
+          "Other"
         ].map((interest) => (
           <label className="container" key={interest}>
             <input
