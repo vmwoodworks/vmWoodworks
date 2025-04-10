@@ -33,6 +33,7 @@ const Admin = () => {
   const CORRECT_PASSCODE = '3140';
 
   const [formData, setFormData] = useState({
+    heading: '',
     description: '',
     category: '',
     mainPicture: '',
@@ -88,6 +89,7 @@ const Admin = () => {
           secondaryImages: processedSecondaryImages,
           description: formData.description,
           category: formData.category,
+          heading: formData.heading,
         },
       });
       
@@ -95,6 +97,7 @@ const Admin = () => {
         alert('Item added successfully!');
         // Reset form
         setFormData({
+          heading: '',
           description: '',
           category: '',
           mainPicture: '',
@@ -176,6 +179,18 @@ const Admin = () => {
       
       {activeTab === 'add' ? (
         <form className='admin-form' onSubmit={handleSubmit}>
+            <div>
+            <label>Heading</label>
+            <textarea
+            style={{height: '60px'}}
+            className='desc-input-form'
+              name="heading"
+              placeholder="Heading"
+              value={formData.heading}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
           <div>
             <label>Description</label>
             <textarea
@@ -237,8 +252,7 @@ const Admin = () => {
                     <img src={item.mainImage} alt={item.description} />
                   </div>
                   <div className="item-details">
-                    <h4>Category: {item.category}</h4>
-                    <p>{item.description}</p>
+                    <h4>{item.heading}</h4>
                   </div>
                   <div className="item-actions">
                     <button 

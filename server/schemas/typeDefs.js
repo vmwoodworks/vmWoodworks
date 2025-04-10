@@ -4,6 +4,7 @@ type Item {
     mainImage: String
     secondaryImages: [String]
     description: String
+    heading: String
     category: String
 }
 
@@ -16,6 +17,7 @@ type Mutation {
     addItem(
         mainImage: String!,
         secondaryImages: [String],
+        heading: String!,
         description: String!,
         category: String!
     ): Item

@@ -7,6 +7,7 @@ export const GET_ITEMS = gql`
       mainImage
       description
       category
+      heading
     }
   }
 `;
@@ -19,6 +20,7 @@ export const GET_ITEM = gql`
       secondaryImages
       description
       category
+      heading
     }
   }
 `;

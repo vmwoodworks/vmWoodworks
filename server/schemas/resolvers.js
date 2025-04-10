@@ -19,6 +19,7 @@ const resolvers = {
                     _id: args._id, // ID of the item
                     mainImage: args.mainImage, // Main image URL
                     secondaryImages: args.secondaryImages || [], // Secondary images (optional)
+                    heading: args.heading,
                     description: args.description, // Description of the item
                     category: args.category, // Category of the item
                 });

@@ -14,6 +14,11 @@ const ItemSchema = new Schema({
     type: [String], // Array of strings for additional image URLs or paths
     default: [], // Default to an empty array if no secondary images are provided
   },
+  heading: {
+    type: String, // Text description of the product or item
+    required: true, // Description is required
+    maxlength: 200, // Optional: Limit the length of the description
+  },
   description: {
     type: String, // Text description of the product or item
     required: true, // Description is required

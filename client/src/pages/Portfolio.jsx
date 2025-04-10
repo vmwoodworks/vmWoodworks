@@ -22,7 +22,7 @@ const Portfolio = () => {
                 alt="Main"               
               />               
               <div className="overlay">                 
-                <p className="details-p">{item.description}</p>                  
+                <p className="details-p">{item.heading}</p>                  
               </div>             
             </Link>           
           </div>         
