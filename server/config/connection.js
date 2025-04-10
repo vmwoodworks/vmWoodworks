@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://vmwoodworks3:Woodworks123@cluster.4bohwrs.mongodb.net/VMWoodworks?retryWrites=true&w=majority&appName=Cluster');
+mongoose.connect(process.env.MONGODB_URI);
 
 module.exports = mongoose.connection;
