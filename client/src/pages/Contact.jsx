@@ -209,7 +209,7 @@ const Contact = () => {
           <label className="container" key={interest}>
             <input
               type="checkbox"
-              name='interest'
+              name={interest}
               checked={formData.projectDetails.interests.includes(interest)}
               onChange={handleCheckboxChange}
             />
