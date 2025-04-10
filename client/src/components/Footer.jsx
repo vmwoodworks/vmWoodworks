@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="footer" style={{ color: "white" }}>
       <p>
         {" "}
-        123 Main St <br /> Philadelphia, PA <br /> 19116
+        428 Arbutus Ave <br /> Horsham, PA <br /> 19044
       </p>
       <Link to="/">
         <img src="/assets\footer_logo.jpg"></img>

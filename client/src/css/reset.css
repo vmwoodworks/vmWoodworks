@@ -68,4 +68,5 @@
 
   main {
     flex: 1; /* This will push the footer down */
+    margin-bottom: 25px;
   }

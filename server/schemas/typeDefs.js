@@ -19,6 +19,8 @@ type Mutation {
         description: String!,
         category: String!
     ): Item
+
+      deleteItem(_id: ID!): Item
 }
 `;
 

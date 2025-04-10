@@ -21,3 +21,17 @@ export const ADD_ITEM_MUTATION = gql`
     }
   }
 `;
+
+export const DELETE_ITEM_MUTATION = gql`
+  mutation DeleteItem($id: ID!) {
+    deleteItem(_id: $id) {
+      _id
+      mainImage
+      secondaryImages
+      description
+      category
+    }
+  }
+`;
+
+
