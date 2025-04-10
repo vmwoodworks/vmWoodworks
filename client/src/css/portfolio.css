@@ -98,6 +98,11 @@
 }
 
 @media (max-width: 600px) {
+  .portfolio-item .overlay {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
   .portfolio-div {
     grid-template-columns: 1fr;
   }

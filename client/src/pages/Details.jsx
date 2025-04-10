@@ -72,7 +72,7 @@ const Details = () => {
         </button>
         <div className={`overlay ${isOverlayVisible ? "visible" : ""}`}>
           <p className="details-p">{data.item.description}</p>
-          <p className="category-p">Category: {data.item.category}</p>
+          <p className="category-p">{data.item.category}</p>
         </div>
       </div>
       <h2 className="sub-heading">Additional Photos:</h2>
